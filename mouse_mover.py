@@ -20,7 +20,7 @@ def signal_handler(sig, frame):
 signal.signal(signal.SIGINT, signal_handler)
 
 def move_mouse_randomly():
-    """Move mouse randomly for 30 seconds, then sleep for random interval"""
+    
     global running
     screen_width, screen_height = pyautogui.size()
     
@@ -42,8 +42,8 @@ def move_mouse_randomly():
             break
             
         # Sleep for random interval between 5-30 seconds
-        sleep_time = random.randint(5, 30)
-        print(f"Sleeping for {sleep_time} seconds...")
+        sleep_time = random.randint(25, 60)
+        print(f"waiting for {sleep_time} seconds...")
         
         # Sleep in small chunks to allow for quick exit
         for _ in range(sleep_time):
@@ -52,12 +52,12 @@ def move_mouse_randomly():
             time.sleep(1)
 
 if __name__ == "__main__":
-    print("Mouse mover started. Press Ctrl+C to stop.")
+    print("app is running... Press Ctrl+C to stop.")
     try:
         move_mouse_randomly()
     except KeyboardInterrupt:
         running = False
-        print("\nMouse mover stopped.")
+        print("\nApp is stopped.")
     finally:
         running = False
         print("Cleanup complete.")
